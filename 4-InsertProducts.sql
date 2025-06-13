@@ -1,0 +1,2 @@
+insert into mst_products (name, price, description, category_id) values ('Monitor', '1500000', 'Layar monitor komputer 20inch', 1);
+insert into mst_products (name, price, description, category_id) values ('Redmi Note 14 Pro', '3700000', 'Smartphone dengan layar 6inch, 8/256 GB', 1);
