@@ -26,9 +26,11 @@ class ProductController(
     @GetMapping("/{id}")
     fun getAProductById(
         @PathVariable(name = "id") idProduct: Int
-    ): ResponseEntity<ResGetProductDto> {
+    ): ResponseEntity<BaseResponse<ResGetProductDto>> {
         return ResponseEntity.ok(
-            masterProductService.findProductById(idProduct)
+            BaseResponse(
+                data = masterProductService.findProductById(idProduct)
+            )
         )
     }
 }

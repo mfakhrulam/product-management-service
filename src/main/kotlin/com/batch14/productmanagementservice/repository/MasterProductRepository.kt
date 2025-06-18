@@ -4,6 +4,7 @@ import com.batch14.productmanagementservice.domain.entity.MasterProductEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
+import java.util.Optional
 
 interface MasterProductRepository: JpaRepository<MasterProductEntity, Int> {
     @Query("""
@@ -21,5 +22,5 @@ interface MasterProductRepository: JpaRepository<MasterProductEntity, Int> {
     """, nativeQuery = false)
     fun getProductById(
         @Param("productId") productId: Int
-    ): MasterProductEntity
+    ): Optional<MasterProductEntity>
 }
