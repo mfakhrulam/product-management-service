@@ -8,5 +8,5 @@ data class ResGetProductDto(
     val isForSale: Boolean,
     var categoryId: Int? = null,
     var categoryName: String? = null,
-    val createdBy: String?
+    val createdBy: String? = null
 )

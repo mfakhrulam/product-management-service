@@ -12,7 +12,7 @@ interface MasterProductRepository: JpaRepository<MasterProductEntity, Int> {
         WHERE U.isDelete = false
         AND U.isActive = true
     """, nativeQuery = false)
-    fun getAllProducts(): List<MasterProductEntity>
+    fun findAllProducts(): List<MasterProductEntity>
 
     @Query("""
         SELECT U FROM MasterProductEntity U
@@ -20,7 +20,13 @@ interface MasterProductRepository: JpaRepository<MasterProductEntity, Int> {
         AND U.isActive = true
         AND U.id = :productId
     """, nativeQuery = false)
-    fun getProductById(
+    fun findProductById(
         @Param("productId") productId: Int
     ): Optional<MasterProductEntity>
+
+    @Query("""
+        SELECT u FROM MasterProductEntity u
+        WHERE u.id IN (:ids)
+    """, nativeQuery = false)
+    fun findAllByIds(ids: List<Int>): List<MasterProductEntity>
 }

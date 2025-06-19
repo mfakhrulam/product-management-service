@@ -1,11 +1,15 @@
 package com.batch14.productmanagementservice.controller
 
+import com.batch14.productmanagementservice.domain.dto.request.ReqCreateProductDto
 import com.batch14.productmanagementservice.domain.dto.response.BaseResponse
 import com.batch14.productmanagementservice.domain.dto.response.ResGetProductDto
 import com.batch14.productmanagementservice.service.MasterProductService
 import org.springframework.http.ResponseEntity
+import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -30,6 +34,17 @@ class ProductController(
         return ResponseEntity.ok(
             BaseResponse(
                 data = masterProductService.findProductById(idProduct)
+            )
+        )
+    }
+
+    @PostMapping("/")
+    fun createProduct(
+        @Valid @RequestBody req: ReqCreateProductDto
+    ): ResponseEntity<BaseResponse<ResGetProductDto>> {
+        return ResponseEntity.ok(
+            BaseResponse(
+                data = masterProductService.createProduct(req)
             )
         )
     }
