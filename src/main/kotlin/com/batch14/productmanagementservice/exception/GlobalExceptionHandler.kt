@@ -20,6 +20,7 @@ class GlobalExceptionHandler {
         }
         return ResponseEntity(
             BaseResponse(
+                status = "F",
                 error = errors,
                 message = "Error"
             ),
