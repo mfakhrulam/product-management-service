@@ -114,7 +114,7 @@ class MasterProductServiceImpl(
             price = req.price,
             description = req.description,
             isForSale = isForSale,
-            category = if(category.isPresent){ // ini ga pake role != null
+            category = if(category.isPresent){ // ini ga pake
                 category.get()
             } else {
                 null
